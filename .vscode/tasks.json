@@ -33,7 +33,10 @@
                 "-c", "usbasp",
                 "-p", "${config:Config.MCU}",
                 "-b", "115200",
-                "-U", "flash:w:app.hex"
+                "-U", "flash:w:app.hex",
+
+                "-D", "F_CPU=${config:Config.F_CPU}",
+                "-D", "BAUD=${config:Config.BAUD}",
             ],
             "group": "build",
             "presentation": {
