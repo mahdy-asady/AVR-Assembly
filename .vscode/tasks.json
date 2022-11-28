@@ -11,7 +11,10 @@
                 "../app/${config:Config.PROJECT}/app.asm",
                 "-o", "app.hex",
                 "-d", "app.obj",
-                "-e", "app.eep.hex"
+                "-e", "app.eep.hex",
+
+                "-D", "F_CPU=${config:Config.F_CPU}",
+                "-D", "BAUD=${config:Config.BAUD}"
             ],
             "group": {
                 "kind": "build",
@@ -33,10 +36,7 @@
                 "-c", "usbasp",
                 "-p", "${config:Config.MCU}",
                 "-b", "115200",
-                "-U", "flash:w:app.hex",
-
-                "-D", "F_CPU=${config:Config.F_CPU}",
-                "-D", "BAUD=${config:Config.BAUD}",
+                "-U", "flash:w:app.hex"
             ],
             "group": "build",
             "presentation": {
