@@ -34,14 +34,9 @@ Endloop:
     rjmp Endloop
 
 TogglePin:
-    inc LEDREG
     ldi TMPREG, 0x01
-    and LEDREG, TMPREG
-    brne TurnOff
-    sbi PORTC, 0
-    ret
-TurnOff:
-    cbi PORTC, 0
+    eor LEDREG, TMPREG
+    out PORTC, LEDREG
     ret
 
 Delay:
