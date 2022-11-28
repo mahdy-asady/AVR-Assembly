@@ -1,0 +1,10 @@
+{
+    "Config": {
+        "PROJECT": "simple_blink",
+        "MCU": "m328p",
+        "DEFINES": [
+            "F_CPU=16000000",
+            "BAUD=15200"
+        ]
+    }
+}

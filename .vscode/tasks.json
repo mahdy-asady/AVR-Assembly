@@ -1,0 +1,48 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "process",
+            "label": "Build",
+            "command": "avra",
+            "args": [
+                "../app/${config:Config.PROJECT}/app.asm",
+                "-o", "app.hex",
+                "-d", "app.obj",
+                "-e", "app.eep.hex"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "options": {
+                "cwd": "build"
+            }
+        },
+        {
+            "type": "process",
+            "label": "Flash",
+            "command": "avrdude",
+            "args": [
+                "-c", "usbasp",
+                "-p", "${config:Config.MCU}",
+                "-b", "115200",
+                "-U", "flash:w:app.hex"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            },
+            "options": {
+                "cwd": "build"
+            }
+        }
+    ]
+}
